@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RegisterRequest;
 use App\User;
 use Exception;
-use Hash;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use JWTAuth;
+use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\JWTAuth;
 
 
 class MemberController extends Controller
@@ -56,7 +56,7 @@ class MemberController extends Controller
     }
 
 
-    public function register(RegisterRequest $request): JsonResponse
+    public function register(Request $request): JsonResponse
     {
         $user = User::create([
             'name' => $request->post('name'),
